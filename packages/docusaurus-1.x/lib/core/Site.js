@@ -9,13 +9,14 @@ const React = require('react');
 const fs = require('fs');
 const classNames = require('classnames');
 
-const HeaderNav = require('./nav/HeaderNav.js');
+const HeaderNav = require(`${process.cwd()}/core/HeaderNav.js`);
 const Head = require('./Head.js');
 
 const Footer = require(`${process.cwd()}/core/Footer.js`);
 const translation = require('../server/translation.js');
 const env = require('../server/env.js');
 const liveReloadServer = require('../server/liveReloadServer.js');
+const metadata = require('./metadata.js');
 const {idx, getPath} = require('./utils.js');
 
 const CWD = process.cwd();
@@ -79,6 +80,11 @@ class Site extends React.Component {
             language={this.props.language}
             version={this.props.version}
             current={this.props.metadata}
+            metadata={metadata}
+            getPath={getPath}
+            classNamesFn={classNames}
+            translation={translation}
+            idx={idx}
           />
           <div className={navPusherClasses}>
             {this.props.children}
