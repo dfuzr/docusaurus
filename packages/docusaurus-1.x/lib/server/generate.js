@@ -24,7 +24,6 @@ async function execute() {
   const mkdirp = require('mkdirp');
   const glob = require('glob');
   const chalk = require('chalk');
-  const Site = require('../core/Site.js');
   const env = require('./env.js');
   const loadConfig = require('./config.js');
   const siteConfig = loadConfig(`${CWD}/siteConfig.js`);
@@ -58,6 +57,7 @@ async function execute() {
 
   readMetadata.generateMetadataDocs();
   const Metadata = require('../core/metadata.js');
+  const Site = require('../core/Site.js');
 
   // TODO: what if the project is a github org page? We should not use
   // siteConfig.projectName in this case. Otherwise a GitHub org doc URL would
